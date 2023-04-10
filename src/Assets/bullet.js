@@ -1,5 +1,5 @@
 import { jeepWidth, jeepHeigth, jeepX, jeepY, jeepSpeed } from "./jeep.js";
-import { raptorHeigth, raptorWidth } from "./raptor.js";
+import { raptorHeigth, raptorWidth, raptorArr } from "./raptor.js";
 import { canvasHeight, ctx } from "../canvas.js";
 import { aimEnd, aimscope } from "./aim.js";
 
@@ -40,7 +40,7 @@ function newBullet(aimangle, canvasHeight, ctx) {
   bulletArr.push(new Bullet(aimangle, canvasHeight, ctx));
 }
 
-function bulletLogic(raptorArr) {
+function bulletLogic() {
   bulletArr.forEach((bullet, index) => {
     bullet.drawBullet();
     bullet.moveBullet();
@@ -61,6 +61,7 @@ function bulletLogic(raptorArr) {
       )
     ) {
       bullet.bulletRemove();
+      console.log("bumm");
 
       raptorArr
         .find(

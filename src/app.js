@@ -8,99 +8,141 @@ import {
 import { bulletLogic, newBullet } from "./Assets/bullet.js";
 import { drawJeep, jeepX } from "./Assets/jeep.js";
 import { drawAim, moveAim } from "./Assets/aim.js";
+import { canvasWidth, ctx, canvasHeight, canvas, drawBg } from "./canvas.js";
 
-document.querySelector("#second-page").style.display = "none";
-
-const canvas = document.querySelector("#canvas");
-canvas.width = 650;
-canvas.height = 650;
-const ctx = canvas.getContext("2d");
 let animationId;
 
-let raptorFreq = 0;
+let frameCounter = 0;
 
 let isAimLeft = false;
 let isAimRight = false;
 
-// const aimscope = Math.PI / 12;
-// let aimEnd = -Math.PI / 2 - aimscope;
-// let aimBegin = aimEnd + 2 * aimscope;
-// let aimspeed = 1.5;
-
-let raptorArr = [];
+let raptorLife = 0;
+let raptorSpeed = 0;
+let raptorFreqency = 0;
 
 window.addEventListener("load", () => {
-  //   document.querySelector("#game-page").style.display = "none";
+  let displayArr = ["block", "none", "none"];
+  let showIndex = 0;
 
-  //   document.querySelector(".next-button").addEventListener("click", hidePage);
-
-  //   function hidePage() {
-  //     document.querySelector("#second-page").style.display = "none";
-  //     document.querySelector("#game-page").style.display = "block";
-  //     startgame();
-  //   }
-
-  startgame();
+  document.querySelector("#start-page-1").style.display = displayArr[0];
+  document.querySelector("#start-page-2").style.display = displayArr[1];
+  document.querySelector("#game-page").style.display = displayArr[2];
 
   document
-    .querySelector("#canvas")
-    .addEventListener("click", () => newBullet());
+    .querySelectorAll(".next-button")
+    .forEach((page) => page.addEventListener("click", hidePage));
 
-  document.addEventListener("keydown", (event) => {
-    if (event.code === "KeyA") {
-      isAimLeft = true;
+  function hidePage(event) {
+    const pageMove = event.target.className;
+
+    if (pageMove === "toSecond") {
+      showIndex = 1;
     }
 
-    if (event.code === "KeyD") {
-      isAimRight = true;
-    }
-  });
-
-  document.addEventListener("keyup", (event) => {
-    if (event.code === "KeyA") {
-      isAimLeft = false;
+    //Start Game Logic
+    if (pageMove.includes("toGame")) {
+      showIndex = 2;
     }
 
-    if (event.code === "KeyD") {
-      isAimRight = false;
+    if (pageMove.includes("Easy")) {
+      raptorLife = 2;
+      raptorSpeed = 1;
+      raptorFreqency = 250;
+      startgame();
     }
-  });
+
+    if (pageMove.includes("Medium")) {
+      raptorLife = 4;
+      raptorSpeed = 2;
+      raptorFreqency = 150;
+      startgame();
+    }
+
+    if (pageMove.includes("Hard")) {
+      raptorLife = 4;
+      raptorSpeed = 3;
+      raptorFreqency = 100;
+      startgame();
+    }
+
+    //Display pages logic
+    for (let i = 0; i < displayArr.length; i++) {
+      if (i === showIndex) {
+        displayArr[i] = "block";
+      } else {
+        displayArr[i] = "none";
+      }
+    }
+    document.querySelector("#start-page-1").style.display = displayArr[0];
+    document.querySelector("#start-page-2").style.display = displayArr[1];
+    document.querySelector("#game-page").style.display = displayArr[2];
+  }
+
+  function startgame() {
+    animate();
+    document
+      .querySelector("#canvas")
+      .addEventListener("click", () => newBullet());
+
+    document.addEventListener("keydown", (event) => {
+      if (event.code === "KeyA") {
+        isAimLeft = true;
+      }
+
+      if (event.code === "KeyD") {
+        isAimRight = true;
+      }
+    });
+
+    document.addEventListener("keyup", (event) => {
+      if (event.code === "KeyA") {
+        isAimLeft = false;
+      }
+
+      if (event.code === "KeyD") {
+        isAimRight = false;
+      }
+    });
+  }
 });
 
-function startgame() {
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.fillStyle = "lightblue";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
-
+  drawBg();
   drawJeep();
+
   drawscore();
 
   //Raptor logic
 
-  if (raptorFreq % 250 === 0) {
-    newRaptor(raptorArr);
+  if (frameCounter % raptorFreqency === 0) {
+    newRaptor(raptorLife, raptorSpeed);
   }
-  raptorFreq += 1;
+  frameCounter += 1;
 
-  raptorLogic(raptorArr);
+  raptorLogic();
 
   //Bullet logic
 
-  bulletLogic(raptorArr);
+  bulletLogic();
 
   //Jeep Logic
 
   if (
     scoreRaptor % 15 === 0 &&
     scoreRaptor !== 0 &&
-    jeepX < canvas.width * 0.75
+    jeepX < canvasWidth * 0.75
   ) {
     jeepX += 1;
   } else if (scoreRaptor % 25 === 0 && scoreRaptor !== 0) {
-    jeepX = canvas.width / 2 - jeepWidth;
+    jeepX = canvasWidth / 2 - jeepWidth;
   } else if (
     scoreRaptor % 35 === 0 &&
     scoreRaptor !== 0 &&
-    jeepX < canvas.width * 0.25
+    jeepX < canvasWidth * 0.25
   ) {
     jeepX -= 1;
   }
@@ -113,7 +155,7 @@ function startgame() {
   if (gameoverRaptor) {
     cancelAnimationFrame(animationId);
   } else {
-    animationId = requestAnimationFrame(startgame);
+    animationId = requestAnimationFrame(animate);
   }
 }
 

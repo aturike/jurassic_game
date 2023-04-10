@@ -1,26 +1,45 @@
 import { jeepWidth, jeepHeigth, jeepX, jeepY, jeepSpeed } from "./jeep.js";
 import { canvasWidth, ctx } from "../canvas.js";
 
-const raptorWidth = 15;
-const raptorHeigth = 20;
-const raptorLife = 2;
+const rap = new Image();
+rap.src =
+  "../img/raptor spritesheet/ezgif-4-64483f2b62-gif-png/frame_00_delay-0.04s.png";
+
+let raptorArr = [];
+
+const raptorImgW = rap.width / 1.7;
+const raptorImgH = rap.height / 1.7;
+const raptorWidth = raptorImgW / 4; //===hitbox logic here!
+const raptorHeigth = raptorImgH / 6; //===hitbox logic here!
+
+const raptorModX = -raptorWidth * 1.3;
+const raptorModY = -raptorHeigth * 3.2;
 let gameoverRaptor = false;
 let scoreRaptor = 0;
 
 class Raptor {
-  constructor() {
+  constructor(raptorLife, raptorSpeed) {
     this.raptorX = canvasWidth * Math.random();
     this.raptorY = 0;
-    this.raptorSpeed = 1;
+    this.raptorSpeed = raptorSpeed;
     this.raptorLife = raptorLife;
     this.raptorAlive = true;
   }
 
   drawRaptor() {
-    ctx.beginPath();
-    ctx.fillStyle = "black";
-    ctx.fillRect(this.raptorX, this.raptorY, raptorWidth, raptorHeigth);
-    ctx.closePath();
+    // Hitboxdraw
+    // ctx.beginPath();
+    // ctx.fillStyle = "black";
+    // ctx.fillRect(this.raptorX, this.raptorY, raptorWidth, raptorHeigth);
+    // ctx.closePath();
+
+    ctx.drawImage(
+      rap,
+      this.raptorX + raptorModX,
+      this.raptorY + raptorModY,
+      raptorImgW,
+      raptorImgH
+    );
   }
 
   moveRaptor() {
@@ -36,6 +55,7 @@ class Raptor {
       this.raptorAlive = false;
     } else {
       this.raptorLife -= 1;
+      console.log(this.raptorLife);
     }
   }
 
@@ -44,7 +64,7 @@ class Raptor {
   }
 }
 
-function raptorLogic(raptorArr) {
+function raptorLogic() {
   raptorArr.forEach((raptor, index) => {
     raptor.drawRaptor();
 
@@ -71,8 +91,8 @@ function raptorLogic(raptorArr) {
   });
 }
 
-function newRaptor(rArr, canvasWidth, ctx) {
-  rArr.push(new Raptor(canvasWidth, ctx));
+function newRaptor(raptorLife, raptorSpeed) {
+  raptorArr.push(new Raptor(raptorLife, raptorSpeed));
 }
 
 export {
@@ -82,4 +102,5 @@ export {
   scoreRaptor,
   raptorHeigth,
   raptorWidth,
+  raptorArr,
 };

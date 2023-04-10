@@ -6,13 +6,120 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jurrasic Game</title>
     <link rel="stylesheet" href="./styles/styles.css" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div id="landing-page" style="width: 700px; height: 700px">
       <!-- <div id="first-page"><h1>Hello</h1></div> -->
-      <div id="second-page">
-        <button class="next-button">Start game</button>
+
+      <div id="start-page-1" class="start-page">
+        <div class="start-page-indiv">
+          <div class="instruction-div">
+            <div class="start-page-txt">
+              <h2>
+                You and your friend decided to have a lovely trip to the totally
+                safe Jurassic Park.
+              </h2>
+              <br />
+              <h2>
+                However there was a malfunction in one of the cages and all of
+                the Velociraptors have been released
+              </h2>
+            </div>
+          </div>
+          <div class="button-div-parent">
+            <div class="button-div">
+              <div>
+                <button class="next-button">
+                  <img
+                    src="./img/button/icons8-next-page-32.png"
+                    alt="next-btn"
+                    class="toSecond"
+                  />
+                </button>
+                <h4>Next</h4>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <!-- Star Page -->
+      <div id="start-page-2" class="start-page">
+        <div class="start-page-indiv">
+          <div class="instruction-div">
+            <div class="start-page-txt">
+              <h2>You found a jeep. Try to make to the beach.</h2>
+              <br />
+              <h2>Alive...</h2>
+            </div>
+            <div class="controls-parent-div">
+              <h2>Controls</h2>
+              <div class="controls-div">
+                <div class="ctrl-btn-div">
+                  <img
+                    class="ctrl-btn"
+                    src="./img/page2/Buttons.png"
+                    alt="control buttons"
+                  />
+                  <h3>A & D to change Aim</h3>
+                </div>
+                <div class="ctrl-btn-div">
+                  <img
+                    class="ctrl-btn"
+                    src="./img/page2/mouse.png"
+                    alt="mouse-click-to-shoot"
+                  />
+                  <h3>Click to shoot</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="button-div-parent">
+            <h4>Start game</h4>
+            <div class="button-div">
+              <div>
+                <button class="next-button">
+                  <img
+                    src="./img/button/icons8-next-page-32.png"
+                    alt="next-btn"
+                    class="toGameEasy"
+                  />
+                </button>
+                <h4>Easy</h4>
+              </div>
+              <div>
+                <button class="next-button">
+                  <img
+                    src="./img/button/icons8-next-page-32.png"
+                    alt="next-btn"
+                    class="toGameMedium"
+                  />
+                </button>
+                <h4>Medium</h4>
+              </div>
+              <div>
+                <button class="next-button">
+                  <img
+                    src="./img/button/icons8-next-page-32.png"
+                    alt="next-btn"
+                    class="toGameHard"
+                  />
+                </button>
+                <h4>Hard</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div id="game-page">
         <canvas id="canvas"></canvas>
       </div>
