@@ -4,7 +4,6 @@ import { jeepHeigth, jeepX, jeepWidth } from "./jeep.js";
 const aimscope = Math.PI / 12;
 let aimEnd = -Math.PI / 2 - aimscope;
 let aimBegin = aimEnd + 2 * aimscope;
-let aimspeed = 1.5;
 
 function drawAim() {
   ctx.beginPath();
@@ -22,7 +21,7 @@ function drawAim() {
   ctx.closePath();
 }
 
-function moveAim(isAimLeft, isAimRight) {
+function moveAim(aimspeed, isAimLeft, isAimRight) {
   if (isAimLeft && aimEnd >= -Math.PI) {
     aimEnd -= (Math.PI / 360) * aimspeed;
     aimBegin = aimEnd + 2 * aimscope;

@@ -50,12 +50,11 @@ class Raptor {
   }
 
   raptordamage() {
-    if (this.raptorLife <= 0) {
+    if (this.raptorLife <= 1) {
       scoreRaptor += this.raptorAlive;
       this.raptorAlive = false;
     } else {
       this.raptorLife -= 1;
-      console.log(this.raptorLife);
     }
   }
 
@@ -64,7 +63,13 @@ class Raptor {
   }
 }
 
-function raptorLogic() {
+function raptorLogic(retry) {
+  if (retry) {
+    raptorArr = [];
+    gameoverRaptor = false;
+    scoreRaptor = 0;
+  }
+
   raptorArr.forEach((raptor, index) => {
     raptor.drawRaptor();
 

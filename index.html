@@ -16,8 +16,10 @@
     />
   </head>
   <body>
-    <div id="landing-page" style="width: 700px; height: 700px">
-      <!-- <div id="first-page"><h1>Hello</h1></div> -->
+    <div id="landing-page" >
+      <div id="first-page">
+        <button class="next-button"><h1 class="toFirst">Start</h1></button>
+      </div>
 
       <div id="start-page-1" class="start-page">
         <div class="start-page-indiv">
@@ -34,7 +36,7 @@
               </h2>
             </div>
           </div>
-          <div class="button-div-parent">
+          <div class="button-div-parent div-no-border">
             <div class="button-div">
               <div>
                 <button class="next-button">
@@ -83,7 +85,18 @@
             </div>
           </div>
           <div class="button-div-parent">
-            <h4>Start game</h4>
+            <h4 class="start-game">Start game</h4>
+            <div class="ctrl-btn-div">
+              <input
+                type="number"
+                id="aimSpeed"
+                min="1"
+                max="5"
+                value="1.5"
+                step="0.5"
+              />
+              <h4 class="aim-txt">Aim speed</h4>
+            </div>
             <div class="button-div">
               <div>
                 <button class="next-button">
@@ -119,11 +132,57 @@
           </div>
         </div>
       </div>
-
       <div id="game-page">
         <canvas id="canvas"></canvas>
-      </div>
+      </div>  
+      
+
+      <div id="game-over-page">
+        <div class="game-over-page-flex">
+        <div class="game-over-txt">
+          <h1>Game over</h1>
+        </div>
+        <div class="game-over-score">
+          <h2>High score</h2>
+          <ol>
+            <li class="score-li"></li>
+            <li class="score-li"></li>
+            <li class="score-li"></li>
+          </ol>
+        </div>
+        <div class="restart-btn-div-parent">
+          <div class="restart-btn-div">
+            <button class="next-button">
+              <img
+                src="./img/button/icons8-previous-page-32 - Copy.png"
+                alt="next-btn"
+                class="toSecond"
+              />
+            </button>
+            <h4>Change difficulty</h4>
+          </div>
+          <div class="restart-btn-div">
+            <button class="next-button">
+              <img
+                src="./img/button/icons8-restart-64.png"
+                alt="retry-btn"
+                class="toGameRetry"
+              />
+            </button>
+            <h4>Retry</h4>
+          </div>
+        </div>
+        </div>
+
+
+
+      
     </div>
+
+
+
+    
+      
 
     <script type="module" src="./src/app.js"></script>
   </body>

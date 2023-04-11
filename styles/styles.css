@@ -5,6 +5,15 @@
   border: none;
 }
 
+h1 {
+  font-family: "Press Start 2P", cursive;
+  color: white;
+  font-size: 2.5rem;
+  text-align: center;
+  line-height: 1.4rem;
+  padding: 0 0.8rem 0 0.8rem;
+}
+
 h2 {
   font-family: "Press Start 2P", cursive;
   color: white;
@@ -34,6 +43,42 @@ h4 {
 
 #landing-page {
   margin: 0 auto 0 auto;
+  width: 814px;
+  height: 800px;
+}
+
+/* First Page */
+
+#first-page {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto 0 auto;
+  background-color: black;
+  background-image: url("../img/page1/ZZ2F312DBA-550x789.jpg");
+  background-size: 75%;
+  background-position: 50%;
+  background-repeat: no-repeat;
+}
+
+#first-page h1 {
+  font-size: 1.8rem;
+}
+#first-page .next-button:hover h1 {
+  color: #eb0b0b;
+}
+
+#first-page .next-button {
+  display: block;
+  position: relative;
+  margin: 0 auto 0 auto;
+  top: 70vh;
+  background-color: transparent;
+  width: auto;
+}
+
+#aimSpeed {
+  width: 60%;
+  cursor: pointer;
 }
 
 .start-page {
@@ -95,6 +140,9 @@ h4 {
   align-items: center;
   border: 1px solid white;
 }
+.div-no-border {
+  border: 0;
+}
 
 .button-div-parent > h4 {
   margin: 10px 0 10px 0;
@@ -115,8 +163,94 @@ h4 {
   margin: 0 auto 0 auto;
 }
 
+.next-button:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
 .next-button img {
   display: block;
   margin-right: auto;
   width: 30px;
+}
+
+h4.start-game {
+  margin: 1rem auto 2rem auto;
+}
+
+.aim-txt {
+  font-size: 0.4rem;
+}
+
+/* Gameover page */
+
+#game-over-page {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto 0 auto;
+  background-image: url("../img/gameover-page/JeffJacobs_JurassicPark.jpg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position-y: 40%;
+}
+.game-over-page-flex {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 2rem;
+}
+
+.game-over-txt {
+  margin-top: 12rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.game-over-score {
+  display: flex;
+  height: 25dvh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-over-score h2 {
+  font-size: 1.5rem;
+  color: brown;
+  margin-bottom: 3rem;
+}
+
+ol {
+  font-family: "Press Start 2P", cursive;
+  color: white;
+  font-size: 2rem;
+  line-height: 1.2rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.restart-btn-div-parent {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 60%;
+  height: 10dvh;
+}
+
+.restart-btn-div {
+  width: 50%;
+}
+
+.score-li {
+  margin-left: 5rem;
+  margin-right: 1rem;
 }

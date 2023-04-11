@@ -36,11 +36,15 @@ class Bullet {
   }
 }
 
-function newBullet(aimangle, canvasHeight, ctx) {
-  bulletArr.push(new Bullet(aimangle, canvasHeight, ctx));
+function newBullet() {
+  bulletArr.push(new Bullet());
 }
 
-function bulletLogic() {
+function bulletLogic(retry) {
+  if (retry) {
+    bulletArr = [];
+  }
+
   bulletArr.forEach((bullet, index) => {
     bullet.drawBullet();
     bullet.moveBullet();
@@ -51,29 +55,18 @@ function bulletLogic() {
       );
     }
 
-    if (
-      raptorArr.find(
-        (raptor) =>
-          raptor.raptorY > bullet.bulletY - bullet.bulletsize &&
-          raptor.raptorY - raptorHeigth < bullet.bulletY + bullet.bulletsize &&
-          raptor.raptorX - bullet.bulletsize < bullet.bulletX &&
-          raptor.raptorX + raptorWidth + bullet.bulletsize > bullet.bulletX
-      )
-    ) {
-      bullet.bulletRemove();
-      console.log("bumm");
-
-      raptorArr
-        .find(
-          (raptor) =>
-            raptor.raptorY > bullet.bulletY - bullet.bulletsize &&
-            raptor.raptorY - raptorHeigth <
-              bullet.bulletY + bullet.bulletsize &&
-            raptor.raptorX - bullet.bulletsize < bullet.bulletX &&
-            raptor.raptorX + raptorWidth + bullet.bulletsize > bullet.bulletX
-        )
-        .raptordamage();
-    }
+    raptorArr.find((raptor) => {
+      if (
+        raptor.raptorY > bullet.bulletY - bullet.bulletsize &&
+        raptor.raptorY - raptorHeigth < bullet.bulletY + bullet.bulletsize &&
+        raptor.raptorX - bullet.bulletsize < bullet.bulletX &&
+        raptor.raptorX + raptorWidth + bullet.bulletsize > bullet.bulletX &&
+        !bullet.bulletHide
+      ) {
+        bullet.bulletRemove();
+        raptor.raptordamage();
+      } else return false;
+    });
   });
 }
 

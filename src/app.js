@@ -11,6 +11,7 @@ import { drawAim, moveAim } from "./Assets/aim.js";
 import { canvasWidth, ctx, canvasHeight, canvas, drawBg } from "./canvas.js";
 
 let animationId;
+let retry = false;
 
 let frameCounter = 0;
 
@@ -20,14 +21,19 @@ let isAimRight = false;
 let raptorLife = 0;
 let raptorSpeed = 0;
 let raptorFreqency = 0;
+let aimspeed = 0;
+
+let displayArr = ["block", "none", "none", "none", "none"];
+let showIndex = 0;
+
+const scoreArr = [];
 
 window.addEventListener("load", () => {
-  let displayArr = ["block", "none", "none"];
-  let showIndex = 0;
-
-  document.querySelector("#start-page-1").style.display = displayArr[0];
-  document.querySelector("#start-page-2").style.display = displayArr[1];
-  document.querySelector("#game-page").style.display = displayArr[2];
+  document.querySelector("#first-page").style.display = displayArr[0];
+  document.querySelector("#start-page-1").style.display = displayArr[1];
+  document.querySelector("#start-page-2").style.display = displayArr[2];
+  document.querySelector("#game-page").style.display = displayArr[3];
+  document.querySelector("#game-over-page").style.display = displayArr[4];
 
   document
     .querySelectorAll(".next-button")
@@ -36,13 +42,18 @@ window.addEventListener("load", () => {
   function hidePage(event) {
     const pageMove = event.target.className;
 
-    if (pageMove === "toSecond") {
+    if (pageMove.includes("toFirst")) {
       showIndex = 1;
+    }
+
+    if (pageMove === "toSecond") {
+      showIndex = 2;
     }
 
     //Start Game Logic
     if (pageMove.includes("toGame")) {
-      showIndex = 2;
+      showIndex = 3;
+      aimspeed = document.querySelector("#aimSpeed").value;
     }
 
     if (pageMove.includes("Easy")) {
@@ -66,17 +77,13 @@ window.addEventListener("load", () => {
       startgame();
     }
 
-    //Display pages logic
-    for (let i = 0; i < displayArr.length; i++) {
-      if (i === showIndex) {
-        displayArr[i] = "block";
-      } else {
-        displayArr[i] = "none";
-      }
+    if (pageMove.includes("Retry")) {
+      retry = true;
+      startgame();
+      retry = false;
     }
-    document.querySelector("#start-page-1").style.display = displayArr[0];
-    document.querySelector("#start-page-2").style.display = displayArr[1];
-    document.querySelector("#game-page").style.display = displayArr[2];
+
+    pageDisplay();
   }
 
   function startgame() {
@@ -107,6 +114,30 @@ window.addEventListener("load", () => {
   }
 });
 
+function pageDisplay(highScoreArr) {
+  for (let i = 0; i < displayArr.length; i++) {
+    if (i === showIndex) {
+      displayArr[i] = "block";
+    } else {
+      displayArr[i] = "none";
+    }
+  }
+
+  document.querySelector("#first-page").style.display = displayArr[0];
+  document.querySelector("#start-page-1").style.display = displayArr[1];
+  document.querySelector("#start-page-2").style.display = displayArr[2];
+  document.querySelector("#game-page").style.display = displayArr[3];
+  document.querySelector("#game-over-page").style.display = displayArr[4];
+
+  if (highScoreArr) {
+    document.querySelectorAll(".score-li").forEach((liElement, index) => {
+      if (highScoreArr[index] >= 0) {
+        liElement.innerText = highScoreArr[index];
+      }
+    });
+  }
+}
+
 function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.fillStyle = "lightblue";
@@ -123,11 +154,11 @@ function animate() {
   }
   frameCounter += 1;
 
-  raptorLogic();
+  raptorLogic(retry);
 
   //Bullet logic
 
-  bulletLogic();
+  bulletLogic(retry);
 
   //Jeep Logic
 
@@ -150,10 +181,14 @@ function animate() {
   //Aimlogic
 
   drawAim();
-  moveAim(isAimLeft, isAimRight);
+  moveAim(aimspeed, isAimLeft, isAimRight);
 
   if (gameoverRaptor) {
     cancelAnimationFrame(animationId);
+    showIndex = 4;
+    scoreArr.push(scoreRaptor);
+    let highScoreArr = [...scoreArr].sort((a, b) => b - a).slice(0, 3);
+    pageDisplay(highScoreArr);
   } else {
     animationId = requestAnimationFrame(animate);
   }
