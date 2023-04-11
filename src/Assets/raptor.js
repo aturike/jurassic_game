@@ -1,14 +1,64 @@
 import { jeepWidth, jeepHeigth, jeepX, jeepY, jeepSpeed } from "./jeep.js";
 import { canvasWidth, ctx } from "../canvas.js";
 
-const rap = new Image();
-rap.src =
-  "../img/raptor spritesheet/ezgif-4-64483f2b62-gif-png/frame_00_delay-0.04s.png";
+const rapImgArr = [];
+
+const rap1 = new Image();
+rap1.src = "../../img/raptor/frame_00_delay-0.04s.png";
+
+const rap2 = new Image();
+rap2.src = "../../img/raptor/frame_01_delay-0.04s.png";
+
+const rap3 = new Image();
+rap3.src = "../../img/raptor/frame_02_delay-0.04s.png";
+
+rap1.onload = function () {
+  rapImgArr.push(rap1);
+};
+
+rap2.onload = function () {
+  rapImgArr.push(rap2);
+};
+
+rap3.onload = function () {
+  rapImgArr.push(rap3);
+};
+
+const mirRapImgArr = [];
+
+const mirRap1 = new Image();
+mirRap1.src = "../../img/raptormirror/mirror-raptor-00.png";
+
+const mirRap2 = new Image();
+mirRap2.src = "../../img/raptormirror/mirror-raptor-01.png";
+
+const mirRap3 = new Image();
+mirRap3.src = "../../img/raptormirror/mirror-rap-02.png";
+
+mirRap1.onload = function () {
+  mirRapImgArr.push(mirRap1);
+};
+
+mirRap2.onload = function () {
+  mirRapImgArr.push(mirRap2);
+};
+
+mirRap3.onload = function () {
+  mirRapImgArr.push(mirRap3);
+};
+
+let raptorframe = 0;
+
+const deadRap = new Image();
+deadRap.src = "../../img/raptordead.png";
+
+const blood = new Image();
+blood.src = "../../img/blood.png";
 
 let raptorArr = [];
 
-const raptorImgW = rap.width / 1.7;
-const raptorImgH = rap.height / 1.7;
+const raptorImgW = rap1.width / 1.7;
+const raptorImgH = rap1.height / 1.7;
 const raptorWidth = raptorImgW / 4; //===hitbox logic here!
 const raptorHeigth = raptorImgH / 6; //===hitbox logic here!
 
@@ -33,13 +83,29 @@ class Raptor {
     // ctx.fillRect(this.raptorX, this.raptorY, raptorWidth, raptorHeigth);
     // ctx.closePath();
 
-    ctx.drawImage(
-      rap,
-      this.raptorX + raptorModX,
-      this.raptorY + raptorModY,
-      raptorImgW,
-      raptorImgH
-    );
+    if (this.raptorAlive) {
+      const frameLogic = Math.floor(raptorframe / 10);
+
+      if (this.raptorX <= canvasWidth / 2) {
+        ctx.drawImage(
+          rapImgArr[frameLogic % 3],
+          this.raptorX + raptorModX,
+          this.raptorY + raptorModY,
+          raptorImgW,
+          raptorImgH
+        );
+      } else {
+        ctx.drawImage(
+          mirRapImgArr[frameLogic % 3],
+          this.raptorX + raptorModX,
+          this.raptorY + raptorModY,
+          raptorImgW,
+          raptorImgH
+        );
+      }
+    }
+
+    raptorframe++;
   }
 
   moveRaptor() {
@@ -60,6 +126,21 @@ class Raptor {
 
   deadReverse() {
     this.raptorY -= jeepSpeed;
+    ctx.drawImage(
+      deadRap,
+      this.raptorX + raptorModX,
+      this.raptorY + raptorModY,
+      raptorImgW / 1.5,
+      raptorImgH / 1.5
+    );
+
+    ctx.drawImage(
+      blood,
+      this.raptorX,
+      this.raptorY - raptorHeigth,
+      raptorImgW / 5,
+      raptorImgH / 5
+    );
   }
 }
 

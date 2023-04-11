@@ -61,6 +61,7 @@ window.addEventListener("load", () => {
       raptorSpeed = 1;
       raptorFreqency = 250;
       startgame();
+      retry = false;
     }
 
     if (pageMove.includes("Medium")) {
@@ -68,6 +69,7 @@ window.addEventListener("load", () => {
       raptorSpeed = 2;
       raptorFreqency = 150;
       startgame();
+      retry = false;
     }
 
     if (pageMove.includes("Hard")) {
@@ -75,12 +77,18 @@ window.addEventListener("load", () => {
       raptorSpeed = 3;
       raptorFreqency = 100;
       startgame();
+      retry = false;
     }
 
     if (pageMove.includes("Retry")) {
       retry = true;
       startgame();
       retry = false;
+    }
+
+    if (pageMove.includes("Back")) {
+      retry = true;
+      showIndex = 2;
     }
 
     pageDisplay();
