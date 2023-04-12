@@ -71,7 +71,7 @@ h4 {
   display: block;
   position: relative;
   margin: 0 auto 0 auto;
-  top: 70vh;
+  top: 80%;
   background-color: transparent;
   width: auto;
 }
@@ -213,7 +213,7 @@ h4.start-game {
 
 .game-over-score {
   display: flex;
-  height: 25dvh;
+  height: 30%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -243,7 +243,7 @@ ol {
   justify-content: space-around;
   align-items: center;
   width: 60%;
-  height: 10dvh;
+  height: 20%;
 }
 
 .restart-btn-div {
