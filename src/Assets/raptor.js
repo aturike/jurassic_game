@@ -2,6 +2,17 @@ import { jeepWidth, jeepHeigth, jeepX, jeepY, jeepSpeed } from "./jeep.js";
 import { canvasWidth, ctx } from "../canvas.js";
 
 const rapImgArr = [];
+let raptorArr = [];
+
+const raptorImgW = rap1.width / 1.7;
+const raptorImgH = rap1.height / 1.7;
+const raptorWidth = raptorImgW / 4; //===hitbox logic here!
+const raptorHeigth = raptorImgH / 6; //===hitbox logic here!
+
+const raptorModX = -raptorWidth * 1.3;
+const raptorModY = -raptorHeigth * 3.2;
+let gameoverRaptor = false;
+let scoreRaptor = 0;
 
 const rap1 = new Image();
 rap1.src = "img/raptor/frame_00_delay-0.04s.png";
@@ -30,18 +41,6 @@ deadRap.src = "img/raptordead.png";
 
 const blood = new Image();
 blood.src = "img/blood.png";
-
-let raptorArr = [];
-
-const raptorImgW = rap1.width / 1.7;
-const raptorImgH = rap1.height / 1.7;
-const raptorWidth = raptorImgW / 4; //===hitbox logic here!
-const raptorHeigth = raptorImgH / 6; //===hitbox logic here!
-
-const raptorModX = -raptorWidth * 1.3;
-const raptorModY = -raptorHeigth * 3.2;
-let gameoverRaptor = false;
-let scoreRaptor = 0;
 
 class Raptor {
   constructor(raptorLife, raptorSpeed) {

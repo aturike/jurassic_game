@@ -1,6 +1,16 @@
 import { jeepX, jeepYintro, jeepHeigth, jeepWidth } from "./jeep.js";
 import { ctx } from "../canvas.js";
 
+const driverArr = [];
+const shooterArr = [];
+let characterframe = 0;
+let shootercharacterframe = 0;
+
+let driverX = -10;
+let shooterX = -50;
+let sitdriver = false;
+let sitshooter = false;
+
 const driverW1 = new Image();
 driverW1.src = "img/Character/driverw1.png";
 const driverWidth = driverW1.width * 1.5;
@@ -11,11 +21,6 @@ driverW2.src = "img/Character/driverw2.png";
 
 const driverF = new Image();
 driverF.src = "img/Character/driverfront.png";
-
-const driverArr = [];
-const shooterArr = [];
-let characterframe = 0;
-let shootercharacterframe = 0;
 
 driverW1.onload = function () {
   driverArr.push(driverW1);
@@ -52,11 +57,6 @@ shooter2.onload = function () {
 shooterB.onload = function () {
   drawShooter();
 };
-
-let driverX = -10;
-let shooterX = -50;
-let sitdriver = false;
-let sitshooter = false;
 
 function drawDriver() {
   if (driverW1.complete && driverW2.complete && driverF.complete) {

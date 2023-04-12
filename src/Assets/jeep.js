@@ -1,9 +1,6 @@
 import { ctx, canvasHeight, canvasWidth } from "../canvas.js";
 import { sitdriver, sitshooter } from "./characters.js";
 
-const jeepImg = new Image();
-jeepImg.src = "img/jeep_1.png";
-
 const jeepWidth = jeepImg.width / 20;
 const jeepHeigth = jeepImg.height / 20;
 const jeepSpeed = 3;
@@ -12,7 +9,8 @@ const jeepY = canvasHeight - jeepHeigth - 30;
 let jeepYintro = canvasHeight / 3;
 
 let intro = true;
-
+const jeepImg = new Image();
+jeepImg.src = "img/jeep_1.png";
 jeepImg.onload = function () {
   drawJeep();
 };
@@ -43,10 +41,6 @@ function moveJeep() {
     }
   }
 }
-
-jeepImg.onload = function () {
-  drawJeep();
-};
 
 export {
   jeepWidth,

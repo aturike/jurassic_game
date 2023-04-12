@@ -80,31 +80,51 @@ Basic game for Jurassic Park raptor hunt. It is a 2D game where the main goal is
   - this.bulletSpeedX
   - this.bulletSpeepY
 
-  -drawBullet(){}
+  - drawBullet(){}
 
-  > Drawing a bullet per instance
+    > Drawing a bullet per instance
 
-  -moveBullet(){}
+  - moveBullet(){}
 
-  > Moving a bullet per instance
+    > Moving a bullet per instance
 
-  -bulletRemove(){}
-
-  > Removes bullet from the canvas
+  - bulletRemove(){}
+    > Removes bullet from the canvas
 
 - bulletLogic(){}
   > Logic of hitting a raptor and removing the bullet
 
 ### characters.js
 
+- drawDriver(){}
+  > Drawing the driver
+- moveDriver(){}
+  > Moving the driver
+- drawShooter(){}
+  > Drawing the shooter
+- moveShooter(){}
+  > Moving the shooter
+
+### jeep.js
+
+- drawJeep(){}
+  > Drawing the jeep
+- moveJeep(){}
+  > Moving the jeep
+- drawJeepIntro(){}
+  > Drawing the jeep at the begining of the game
+
+### raptor.js
+
 ## States y States Transitions
+
+> See logic hide page()
 
 - first page
 - start page 1
 - start page 2
 - game page
 - game over page
-  > See logic hide page()
 
 ## Links
 
