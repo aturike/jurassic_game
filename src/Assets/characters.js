@@ -40,13 +40,13 @@ const shooterB = new Image();
 shooterB.src = "img/Character/shooter-back.png";
 
 shooter1.onload = function () {
-  drawShooter();
   shooterArr.push(shooter1);
+  drawShooter();
 };
 
 shooter2.onload = function () {
-  drawShooter();
   shooterArr.push(shooter2);
+  drawShooter();
 };
 
 shooterB.onload = function () {
