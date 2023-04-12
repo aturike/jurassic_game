@@ -4,13 +4,13 @@ import { canvasWidth, ctx } from "../canvas.js";
 const rapImgArr = [];
 
 const rap1 = new Image();
-rap1.src = "../../img/raptor/frame_00_delay-0.04s.png";
+rap1.src = "img/raptor/frame_00_delay-0.04s.png";
 
 const rap2 = new Image();
-rap2.src = "../../img/raptor/frame_01_delay-0.04s.png";
+rap2.src = "img/raptor/frame_01_delay-0.04s.png";
 
 const rap3 = new Image();
-rap3.src = "../../img/raptor/frame_02_delay-0.04s.png";
+rap3.src = "img/raptor/frame_02_delay-0.04s.png";
 
 rap1.onload = function () {
   rapImgArr.push(rap1);
@@ -27,13 +27,13 @@ rap3.onload = function () {
 const mirRapImgArr = [];
 
 const mirRap1 = new Image();
-mirRap1.src = "../../img/raptormirror/mirror-raptor-00.png";
+mirRap1.src = "img/raptormirror/mirror-raptor-00.png";
 
 const mirRap2 = new Image();
-mirRap2.src = "../../img/raptormirror/mirror-raptor-01.png";
+mirRap2.src = "img/raptormirror/mirror-raptor-01.png";
 
 const mirRap3 = new Image();
-mirRap3.src = "../../img/raptormirror/mirror-rap-02.png";
+mirRap3.src = "img/raptormirror/mirror-rap-02.png";
 
 mirRap1.onload = function () {
   mirRapImgArr.push(mirRap1);
@@ -50,10 +50,10 @@ mirRap3.onload = function () {
 let raptorframe = 0;
 
 const deadRap = new Image();
-deadRap.src = "../../img/raptordead.png";
+deadRap.src = "img/raptordead.png";
 
 const blood = new Image();
-blood.src = "../../img/blood.png";
+blood.src = "img/blood.png";
 
 let raptorArr = [];
 
