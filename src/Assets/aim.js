@@ -1,5 +1,5 @@
-import { ctx, canvasHeight } from "../canvas.js";
-import { jeepHeigth, jeepX, jeepWidth, jeepY } from "./jeep.js";
+import { ctx } from "../canvas.js";
+import { jeepX, jeepWidth, jeepY } from "./jeep.js";
 
 const aimscope = Math.PI / 12;
 let aimEnd = -Math.PI / 2 - aimscope;

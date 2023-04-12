@@ -39,18 +39,72 @@ Basic game for Jurassic Park raptor hunt. It is a 2D game where the main goal is
   > Event listeners for the game
 
 - animate(){}
+
   > Gamelogic
 
--drawScore(){}
-<sub>Drawing score</sub>
+- drawScore(){}
+  > Drawing score
+
+### canvas.js
+
+- drawBg(){}
+
+  > Drawing the background
+
+- moveBg(){}
+  > Moving the background
+
+### scorebar.js
+
+- drawScoreBar(){}
+  > Drawing the scorebar
+
+### Assets
+
+### aim.js
+
+- drawAim(){}
+  > Drawing the aim
+- moveAim(){}
+  > Moves the aim
+
+### bullet.js
+
+- class Bullet
+
+  - this.bulletX
+  - this.bulletY
+  - this.bulletSpeed
+  - this.bulletsize
+  - this.bulletHide
+  - this.bulletSpeedX
+  - this.bulletSpeepY
+
+  -drawBullet(){}
+
+  > Drawing a bullet per instance
+
+  -moveBullet(){}
+
+  > Moving a bullet per instance
+
+  -bulletRemove(){}
+
+  > Removes bullet from the canvas
+
+- bulletLogic(){}
+  > Logic of hitting a raptor and removing the bullet
+
+### characters.js
 
 ## States y States Transitions
 
-_List of states (views) of your game_
-
-## Task
-
-_List of tasks in order of priority_
+- first page
+- start page 1
+- start page 2
+- game page
+- game over page
+  > See logic hide page()
 
 ## Links
 

@@ -10,6 +10,9 @@ const ctx = canvas.getContext("2d");
 
 const bgImg = new Image();
 bgImg.src = "img/Background.png";
+bgImg.onload = function () {
+  drawBg();
+};
 
 let bg1Y = 0;
 let bg2Y = bgImg.height;
@@ -36,9 +39,5 @@ function moveBg() {
     bg2Y = bg1Y + bgImg.height;
   }
 }
-
-bgImg.onload = function () {
-  drawBg();
-};
 
 export { ctx, canvasWidth, canvasHeight, canvas, drawBg, moveBg };

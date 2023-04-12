@@ -1,6 +1,6 @@
-import { jeepWidth, jeepHeigth, jeepX, jeepY, jeepSpeed } from "./jeep.js";
+import { jeepWidth, jeepX } from "./jeep.js";
 import { raptorHeigth, raptorWidth, raptorArr } from "./raptor.js";
-import { canvas, canvasHeight, ctx } from "../canvas.js";
+import { ctx } from "../canvas.js";
 import { aimEnd, aimscope, aimY } from "./aim.js";
 
 let bulletArr = [];
@@ -54,12 +54,14 @@ function bulletLogic(retry) {
     bullet.drawBullet();
     bullet.moveBullet();
 
+    //Removing the bullet(s)
     if (bullet.bulletY < 0 || bullet.bulletHide) {
       bulletArr = bulletArr.filter(
         (bulletElement, bulletIndex) => bulletIndex !== index
       );
     }
 
+    //Hit logic raptor
     raptorArr.find((raptor) => {
       if (
         raptor.raptorY > bullet.bulletY - bullet.bulletsize &&
