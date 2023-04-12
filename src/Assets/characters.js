@@ -104,7 +104,7 @@ function drawShooter() {
       );
     } else {
       ctx.drawImage(
-        shooterArr[frameLogic2 % 2],
+        shooterArr[0],
         shooterX,
         jeepYintro + jeepWidth / 2 - 13,
         driverWidth,
