@@ -1,4 +1,5 @@
 import { ctx, canvasHeight, canvasWidth } from "../canvas.js";
+import { sitdriver, sitshooter } from "./characters.js";
 
 const jeepImg = new Image();
 jeepImg.src = "img/jeep_1.png";
@@ -8,6 +9,10 @@ const jeepHeigth = jeepImg.height / 20;
 const jeepSpeed = 3;
 let jeepX = canvasWidth / 2 - jeepWidth;
 const jeepY = canvasHeight - jeepHeigth - 30;
+let jeepYintro = canvasHeight / 3;
+
+let intro = true;
+
 jeepImg.onload = function () {
   drawJeep();
 };
@@ -21,8 +26,37 @@ function drawJeep() {
   }
 }
 
+function drawJeepIntro() {
+  if (jeepImg.complete) {
+    //console.log("jeep complete");
+    ctx.drawImage(jeepImg, jeepX, jeepYintro, jeepWidth, jeepHeigth);
+  } else {
+  }
+}
+
+function moveJeep() {
+  if (sitdriver && sitshooter) {
+    if (jeepYintro <= jeepY) {
+      jeepYintro += jeepSpeed;
+    } else {
+      intro = false;
+    }
+  }
+}
+
 jeepImg.onload = function () {
   drawJeep();
 };
 
-export { jeepWidth, jeepHeigth, jeepX, jeepY, jeepSpeed, drawJeep };
+export {
+  jeepWidth,
+  jeepHeigth,
+  jeepX,
+  jeepY,
+  jeepYintro,
+  jeepSpeed,
+  drawJeep,
+  drawJeepIntro,
+  moveJeep,
+  intro,
+};

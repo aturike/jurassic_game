@@ -19,7 +19,6 @@ function drawBg() {
     //console.log("background-complete");
     ctx.drawImage(bgImg, 0, bg1Y, canvas.width, bgImg.height);
     ctx.drawImage(bgImg, 0, bg2Y, canvas.width, bgImg.height);
-    moveBg();
   } else {
     setInterval(drawBg(), 100);
   }
@@ -42,4 +41,4 @@ bgImg.onload = function () {
   drawBg();
 };
 
-export { ctx, canvasWidth, canvasHeight, canvas, drawBg };
+export { ctx, canvasWidth, canvasHeight, canvas, drawBg, moveBg };

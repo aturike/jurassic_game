@@ -6,10 +6,24 @@ import {
 } from "./Assets/raptor.js";
 
 import { bulletLogic, newBullet } from "./Assets/bullet.js";
-import { drawJeep, jeepX } from "./Assets/jeep.js";
+import {
+  drawJeep,
+  jeepX,
+  drawJeepIntro,
+  moveJeep,
+  intro,
+} from "./Assets/jeep.js";
 import { drawAim, moveAim } from "./Assets/aim.js";
-import { canvasWidth, ctx, canvasHeight, canvas, drawBg } from "./canvas.js";
+import {
+  canvasWidth,
+  ctx,
+  canvasHeight,
+  canvas,
+  drawBg,
+  moveBg,
+} from "./canvas.js";
 import { drawScoreBar } from "./scorebar.js";
+import { drawDriver, drawShooter } from "./Assets/characters.js";
 
 let animationId;
 let retry = false;
@@ -44,8 +58,6 @@ window.addEventListener("load", () => {
   document
     .querySelectorAll(".next-button")
     .forEach((page) => page.addEventListener("click", hidePage));
-
-  // startgame();
 
   function hidePage(event) {
     const pageMove = event.target.className;
@@ -158,47 +170,59 @@ function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.fillStyle = "lightblue";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
-  drawBg();
-  drawJeep();
 
-  drawscore();
-  drawScoreBar();
+  if (intro) {
+    drawBg();
+    drawJeepIntro();
+    moveJeep();
+    drawDriver();
+    drawShooter();
+  } else {
+    drawBg();
+    moveBg();
+    drawJeep();
+    drawDriver();
+    drawShooter();
 
-  //Raptor logic
+    drawscore();
+    drawScoreBar();
 
-  if (frameCounter % raptorFreqency === 0) {
-    newRaptor(raptorLife, raptorSpeed);
+    //Raptor logic
+
+    if (frameCounter % raptorFreqency === 0) {
+      newRaptor(raptorLife, raptorSpeed);
+    }
+    frameCounter += 1;
+
+    raptorLogic(retry);
+
+    //Bullet logic
+
+    bulletLogic(retry);
+
+    //Jeep Logic
+
+    if (
+      scoreRaptor % 15 === 0 &&
+      scoreRaptor !== 0 &&
+      jeepX < canvasWidth * 0.75
+    ) {
+      jeepX += 1;
+    } else if (scoreRaptor % 25 === 0 && scoreRaptor !== 0) {
+      jeepX = canvasWidth / 2 - jeepWidth;
+    } else if (
+      scoreRaptor % 35 === 0 &&
+      scoreRaptor !== 0 &&
+      jeepX < canvasWidth * 0.25
+    ) {
+      jeepX -= 1;
+    }
+
+    //Aimlogic
+
+    drawAim();
+    moveAim(aimspeed, isAimLeft, isAimRight);
   }
-  frameCounter += 1;
-
-  raptorLogic(retry);
-
-  //Bullet logic
-
-  bulletLogic(retry);
-
-  //Jeep Logic
-
-  if (
-    scoreRaptor % 15 === 0 &&
-    scoreRaptor !== 0 &&
-    jeepX < canvasWidth * 0.75
-  ) {
-    jeepX += 1;
-  } else if (scoreRaptor % 25 === 0 && scoreRaptor !== 0) {
-    jeepX = canvasWidth / 2 - jeepWidth;
-  } else if (
-    scoreRaptor % 35 === 0 &&
-    scoreRaptor !== 0 &&
-    jeepX < canvasWidth * 0.25
-  ) {
-    jeepX -= 1;
-  }
-
-  //Aimlogic
-
-  drawAim();
-  moveAim(aimspeed, isAimLeft, isAimRight);
 
   if (gameoverRaptor) {
     cancelAnimationFrame(animationId);
