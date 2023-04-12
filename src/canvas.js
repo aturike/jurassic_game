@@ -9,7 +9,7 @@ canvas.height = canvasHeight;
 const ctx = canvas.getContext("2d");
 
 const bgImg = new Image();
-bgImg.src = "../img/Background.png";
+bgImg.src = "./img/Background.png";
 
 bgImg.onload = function () {
   drawBg();
@@ -21,7 +21,6 @@ let bg2Y = bgImg.height;
 function drawBg() {
   ctx.drawImage(bgImg, 0, bg1Y, canvas.width, bgImg.height);
   ctx.drawImage(bgImg, 0, bg2Y, canvas.width, bgImg.height);
-
   moveBg();
 }
 
