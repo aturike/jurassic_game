@@ -1,6 +1,6 @@
 # Jurassic game
 
-[Click here to see deployed game](https://aturike.github.io/jurrasic_game)
+[Click here to see deployed game](https://aturike.github.io/jurassic_game/)
 
 ## Description
 
@@ -150,5 +150,5 @@ Basic game for Jurassic Park raptor hunt. It is a 2D game where the main goal is
 ## Links
 
 - [Slides Link](http://slides.com)
-- [Github repository Link](https://github.com/aturike/jurrasic_game)
+- [Github repository Link](https://github.com/aturike/jurassic_game)
 - [Deployment Link](https://aturike.github.io/jurrasic_game)
