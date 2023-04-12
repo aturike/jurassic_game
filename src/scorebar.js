@@ -14,46 +14,58 @@ let redBarX = 0;
 
 const jeepSideImg = new Image();
 jeepSideImg.src = "img/jeep_2.png";
-jeepSideImg.onload = function () {
-  drawScoreBar();
-};
+
 const jeep2width = jeepSideImg.width / 40;
 const jeep2heigth = jeepSideImg.height / 40;
 
 function drawScoreBar() {
-  redBarX =
-    (canvas.width - innerScoreBarMargin * 2) * (scoreRaptor / maxScore) +
-    innerScoreBarMargin;
-  ctx.beginPath();
-  ctx.fillStyle = "#04240d";
-  ctx.fillRect(0, canvas.height - scoreBarHeight, canvas.width, scoreBarHeight);
-  ctx.fill();
-  ctx.fillStyle = "lightgreen";
-  ctx.fillRect(
-    innerScoreBarMargin,
-    innerscoreBarY,
-    redBarX,
-    innerscoreBarHeight
-  );
-  ctx.fill();
+  if (jeepSideImg.complete) {
+    //console.log("scorebar complete");
+    redBarX =
+      (canvas.width - innerScoreBarMargin * 2) * (scoreRaptor / maxScore) +
+      innerScoreBarMargin;
+    ctx.beginPath();
+    ctx.fillStyle = "#04240d";
+    ctx.fillRect(
+      0,
+      canvas.height - scoreBarHeight,
+      canvas.width,
+      scoreBarHeight
+    );
+    ctx.fill();
+    ctx.fillStyle = "lightgreen";
+    ctx.fillRect(
+      innerScoreBarMargin,
+      innerscoreBarY,
+      redBarX,
+      innerscoreBarHeight
+    );
+    ctx.fill();
 
-  ctx.fillStyle = "#eb0b0b";
-  ctx.fillRect(
-    redBarX,
-    innerscoreBarY,
-    canvas.width - redBarX - innerScoreBarMargin,
-    innerscoreBarHeight
-  );
-  ctx.fill();
+    ctx.fillStyle = "#eb0b0b";
+    ctx.fillRect(
+      redBarX,
+      innerscoreBarY,
+      canvas.width - redBarX - innerScoreBarMargin,
+      innerscoreBarHeight
+    );
+    ctx.fill();
 
-  ctx.drawImage(
-    jeepSideImg,
-    redBarX - jeep2width / 8,
-    innerscoreBarY - jeep2heigth / 2,
-    jeep2width,
-    jeep2heigth
-  );
-  ctx.closePath();
+    ctx.drawImage(
+      jeepSideImg,
+      redBarX - jeep2width / 8,
+      innerscoreBarY - jeep2heigth / 2,
+      jeep2width,
+      jeep2heigth
+    );
+    ctx.closePath();
+  } else {
+    setTimeout(drawScoreBar(), 100);
+  }
 }
+
+jeepSideImg.onload = function () {
+  drawScoreBar();
+};
 
 export { drawScoreBar };

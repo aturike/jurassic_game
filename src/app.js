@@ -30,6 +30,11 @@ let showIndex = 0;
 const scoreArr = [];
 
 window.addEventListener("load", () => {
+  //This is a hard solution for a onload img bug which doesn`t show images on the first load.
+  if (!window.location.hash) {
+    window.location = window.location + "#loaded";
+    window.location.reload();
+  }
   document.querySelector("#first-page").style.display = displayArr[0];
   document.querySelector("#start-page-1").style.display = displayArr[1];
   document.querySelector("#start-page-2").style.display = displayArr[2];
