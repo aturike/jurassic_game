@@ -4,13 +4,6 @@ import { canvasWidth, ctx } from "../canvas.js";
 const rapImgArr = [];
 let raptorArr = [];
 
-const raptorImgW = rap1.width / 1.7;
-const raptorImgH = rap1.height / 1.7;
-const raptorWidth = raptorImgW / 4; //===hitbox logic here!
-const raptorHeigth = raptorImgH / 6; //===hitbox logic here!
-
-const raptorModX = -raptorWidth * 1.3;
-const raptorModY = -raptorHeigth * 3.2;
 let gameoverRaptor = false;
 let scoreRaptor = 0;
 
@@ -23,7 +16,28 @@ rap2.src = "img/raptor/frame_01_delay-0.04s.png";
 const rap3 = new Image();
 rap3.src = "img/raptor/frame_02_delay-0.04s.png";
 
+rap1.onload = function () {
+  rapImgArr.push(rap1);
+  drawRaptor();
+};
+
+rap2.onload = function () {
+  rapImgArr.push(rap2);
+  drawRaptor();
+};
+
+rap3.onload = function () {
+  rapImgArr.push(rap3);
+  drawRaptor();
+};
+
 const mirRapImgArr = [];
+const raptorImgW = rap1.width / 1.7;
+const raptorImgH = rap1.height / 1.7;
+const raptorWidth = raptorImgW / 4; //===hitbox logic here!
+const raptorHeigth = raptorImgH / 6; //===hitbox logic here!
+const raptorModX = -raptorWidth * 1.3;
+const raptorModY = -raptorHeigth * 3.2;
 
 const mirRap1 = new Image();
 mirRap1.src = "img/raptormirror/mirror-raptor-00.png";
@@ -34,6 +48,21 @@ mirRap2.src = "img/raptormirror/mirror-raptor-01.png";
 const mirRap3 = new Image();
 mirRap3.src = "img/raptormirror/mirror-rap-02.png";
 
+mirRap1.onload = function () {
+  mirRapImgArr.push(mirRap1);
+  drawRaptor();
+};
+
+mirRap2.onload = function () {
+  mirRapImgArr.push(mirRap2);
+  drawRaptor();
+};
+
+mirRap3.onload = function () {
+  mirRapImgArr.push(mirRap3);
+  drawRaptor();
+};
+
 let raptorframe = 0;
 
 const deadRap = new Image();
@@ -41,6 +70,14 @@ deadRap.src = "img/raptordead.png";
 
 const blood = new Image();
 blood.src = "img/blood.png";
+
+deadRap.onload = function () {
+  drawDeadRaptor();
+};
+
+blood.onload = function () {
+  drawDeadRaptor();
+};
 
 class Raptor {
   constructor(raptorLife, raptorSpeed) {
@@ -77,6 +114,9 @@ class Raptor {
     drawDeadRaptor(this.raptorX, this.raptorY);
   }
 }
+
+// this function is only added to tackle the bug of the first load of the page.
+//Unfortunately it doesn`t help. Need to be refactored after the bug is solved
 
 function drawRaptor(x, y, alive) {
   if (
@@ -174,44 +214,6 @@ function raptorLogic(retry) {
 function newRaptor(raptorLife, raptorSpeed) {
   raptorArr.push(new Raptor(raptorLife, raptorSpeed));
 }
-
-rap1.onload = function () {
-  rapImgArr.push(rap1);
-  drawRaptor();
-};
-
-rap2.onload = function () {
-  rapImgArr.push(rap2);
-  drawRaptor();
-};
-
-rap3.onload = function () {
-  rapImgArr.push(rap3);
-  drawRaptor();
-};
-
-mirRap1.onload = function () {
-  mirRapImgArr.push(mirRap1);
-  drawRaptor();
-};
-
-mirRap2.onload = function () {
-  mirRapImgArr.push(mirRap2);
-  drawRaptor();
-};
-
-mirRap3.onload = function () {
-  mirRapImgArr.push(mirRap3);
-  drawRaptor();
-};
-
-deadRap.onload = function () {
-  drawDeadRaptor();
-};
-
-blood.onload = function () {
-  drawDeadRaptor();
-};
 
 export {
   raptorLogic,

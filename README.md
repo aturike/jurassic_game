@@ -1,4 +1,4 @@
-# Jurrassic game
+# Jurassic game
 
 [Click here to see deployed game](https://aturike.github.io/jurrasic_game)
 
@@ -12,7 +12,7 @@ Basic game for Jurassic Park raptor hunt. It is a 2D game where the main goal is
 - Moveable aim
 - Adding random raptors to the canvas
 - Raptor damage and death
-- Accumulate score
+- Accumulating score
 - Easy, medium, hard options
 - Game over and retry option
 
@@ -20,7 +20,7 @@ Basic game for Jurassic Park raptor hunt. It is a 2D game where the main goal is
 
 - Winning logic
 - More levels with different image set
-- Adding other dino`s and logic
+- Adding other dinosaurs and logic
 - Jeep stop and other game alternatives
 - Character change and extra settings
 
@@ -29,7 +29,7 @@ Basic game for Jurassic Park raptor hunt. It is a 2D game where the main goal is
 ### app.js
 
 - hidePage(){}
-  > pagetransition logic
+  > page transition logic
 - pageDisplay(){}
 
   > pagetransition callback function
@@ -93,6 +93,8 @@ Basic game for Jurassic Park raptor hunt. It is a 2D game where the main goal is
 
 - bulletLogic(){}
   > Logic of hitting a raptor and removing the bullet
+- newBullet(){}
+  > Creating a new instance of class Bullet
 
 ### characters.js
 
@@ -116,7 +118,26 @@ Basic game for Jurassic Park raptor hunt. It is a 2D game where the main goal is
 
 ### raptor.js
 
-## States y States Transitions
+- class Raptor
+  - this.raptorX
+  - this.raptorY
+  - this.raptorSpeed
+  - this.raptorLife
+  - this.raptorAlive
+  - drawRaptor(){}
+    > Draw raptor
+  - moveRaptor(){}
+    > Moves raptor
+  - raptorDamage(){}
+    > Checks if raptor alive and calculates remaining life
+  - deadReverse(){}
+    > Dead raptor movement and draw
+- raptorlogic(){}
+  > Logic of move and gameover
+- newRaptor(){}
+  > Creating a new instance of class Raptor
+
+## States and States Transitions
 
 > See logic hide page()
 
@@ -129,5 +150,5 @@ Basic game for Jurassic Park raptor hunt. It is a 2D game where the main goal is
 ## Links
 
 - [Slides Link](http://slides.com)
-- [Github repository Link](http://github.com)
+- [Github repository Link](https://github.com/aturike/jurrasic_game)
 - [Deployment Link](https://aturike.github.io/jurrasic_game)
