@@ -53,6 +53,8 @@ window.addEventListener("load", () => {
     window.location = window.location + "#loaded";
     window.location.reload();
   }
+
+  //Initial load of pages
   document.querySelector("#first-page").style.display = displayArr[0];
   document.querySelector("#start-page-1").style.display = displayArr[1];
   document.querySelector("#start-page-2").style.display = displayArr[2];

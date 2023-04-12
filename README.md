@@ -29,14 +29,17 @@ Basic game for Jurassic Park raptor hunt. It is a 2D game where the main goal is
 ### app.js
 
 - hidePage(){}
-  <sub>pagetransition logic</sub>
+  > pagetransition logic
 - pageDisplay(){}
-  <sub>pagetransition callback function</sub>
 
--stargame(){}
-<sub>Event listeners for the game</sub>
--animate(){}
-<sub>Gamelogic</sub>
+  > pagetransition callback function
+
+- stargame(){}
+
+  > Event listeners for the game
+
+- animate(){}
+  > Gamelogic
 
 -drawScore(){}
 <sub>Drawing score</sub>
