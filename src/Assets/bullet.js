@@ -1,16 +1,16 @@
 import { jeepWidth, jeepHeigth, jeepX, jeepY, jeepSpeed } from "./jeep.js";
 import { raptorHeigth, raptorWidth, raptorArr } from "./raptor.js";
-import { canvasHeight, ctx } from "../canvas.js";
-import { aimEnd, aimscope } from "./aim.js";
+import { canvas, canvasHeight, ctx } from "../canvas.js";
+import { aimEnd, aimscope, aimY } from "./aim.js";
 
 let bulletArr = [];
 const bulletSpeed = 4;
-const bulletsize = 3;
+const bulletsize = 2;
 
 class Bullet {
   constructor() {
     this.bulletX = jeepX + jeepWidth / 2;
-    this.bulletY = canvasHeight - jeepHeigth;
+    this.bulletY = aimY;
     this.bulletSpeed = bulletSpeed;
     this.bulletsize = bulletsize;
     this.bulletHide = false;
@@ -19,11 +19,16 @@ class Bullet {
   }
 
   drawBullet() {
+    ctx.save();
     ctx.beginPath();
     ctx.fillStyle = "black";
     ctx.arc(this.bulletX, this.bulletY, this.bulletsize, 0, Math.PI * 2, false);
+    ctx.translate(this.bulletX, this.bulletY);
+    ctx.rotate(aimEnd + aimscope + Math.PI / 2);
+    ctx.fillRect(-this.bulletsize, 0, this.bulletsize * 2, 7);
     ctx.fill();
     ctx.closePath();
+    ctx.restore();
   }
 
   moveBullet() {

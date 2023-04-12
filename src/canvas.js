@@ -2,7 +2,7 @@ const canvas = document.querySelector("#canvas");
 import { jeepSpeed } from "./Assets/jeep.js";
 
 const canvasWidth = 650;
-const canvasHeight = 650;
+const canvasHeight = 680;
 
 canvas.width = canvasWidth;
 canvas.height = canvasHeight;

@@ -6,7 +6,7 @@ const jeepWidth = jeepImg.width / 20;
 const jeepHeigth = jeepImg.height / 20;
 const jeepSpeed = 3;
 let jeepX = canvasWidth / 2 - jeepWidth;
-const jeepY = canvasHeight - jeepHeigth - 10;
+const jeepY = canvasHeight - jeepHeigth - 30;
 jeepImg.onload = drawJeep();
 
 function drawJeep() {

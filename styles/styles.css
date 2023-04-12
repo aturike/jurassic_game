@@ -5,6 +5,11 @@
   border: none;
 }
 
+@font-face {
+  font-family: "gameType";
+  src: url("../img/fonts/PressStart2P-Regular.ttf");
+}
+
 h1 {
   font-family: "Press Start 2P", cursive;
   color: white;

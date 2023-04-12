@@ -1,22 +1,16 @@
 import { ctx, canvasHeight } from "../canvas.js";
-import { jeepHeigth, jeepX, jeepWidth } from "./jeep.js";
+import { jeepHeigth, jeepX, jeepWidth, jeepY } from "./jeep.js";
 
 const aimscope = Math.PI / 12;
 let aimEnd = -Math.PI / 2 - aimscope;
 let aimBegin = aimEnd + 2 * aimscope;
+const aimY = jeepY + 10;
 
 function drawAim() {
   ctx.beginPath();
-  ctx.strokeStyle = "yellow";
+  ctx.strokeStyle = "#e6d840";
   ctx.lineWidth = 5;
-  ctx.arc(
-    jeepX + jeepWidth / 2,
-    canvasHeight - jeepHeigth,
-    30,
-    aimBegin,
-    aimEnd,
-    true
-  );
+  ctx.arc(jeepX + jeepWidth / 2, aimY, 30, aimBegin, aimEnd, true);
   ctx.stroke();
   ctx.closePath();
 }
@@ -31,4 +25,4 @@ function moveAim(aimspeed, isAimLeft, isAimRight) {
   }
 }
 
-export { drawAim, moveAim, aimEnd, aimscope };
+export { drawAim, moveAim, aimEnd, aimscope, aimY };

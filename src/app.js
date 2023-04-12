@@ -9,6 +9,7 @@ import { bulletLogic, newBullet } from "./Assets/bullet.js";
 import { drawJeep, jeepX } from "./Assets/jeep.js";
 import { drawAim, moveAim } from "./Assets/aim.js";
 import { canvasWidth, ctx, canvasHeight, canvas, drawBg } from "./canvas.js";
+import { drawScoreBar } from "./scorebar.js";
 
 let animationId;
 let retry = false;
@@ -38,6 +39,8 @@ window.addEventListener("load", () => {
   document
     .querySelectorAll(".next-button")
     .forEach((page) => page.addEventListener("click", hidePage));
+
+  // startgame();
 
   function hidePage(event) {
     const pageMove = event.target.className;
@@ -154,6 +157,7 @@ function animate() {
   drawJeep();
 
   drawscore();
+  drawScoreBar();
 
   //Raptor logic
 
@@ -203,9 +207,9 @@ function animate() {
 }
 
 function drawscore() {
-  ctx.font = "48px serif";
+  ctx.font = "30px gameType";
   ctx.textAlign = "center";
   let text = `Score: ${scoreRaptor}`;
-  let textWidth = ctx.measureText(text).width;
-  ctx.strokeText(text, canvas.width / 2 - textWidth / 2, 50);
+  ctx.fillStyle = "white";
+  ctx.fillText(text, canvas.width / 2, canvas.height / 8);
 }
