@@ -1,5 +1,6 @@
 import { ctx, canvasHeight, canvasWidth } from "../canvas.js";
 import { sitdriver, sitshooter } from "./characters.js";
+import { scoreRaptor } from "./raptor.js";
 
 let intro = true;
 const jeepImg = new Image();
@@ -39,6 +40,23 @@ function moveJeep() {
     } else {
       intro = false;
     }
+  }
+
+  if (
+    scoreRaptor % 15 === 0 &&
+    scoreRaptor !== 0 &&
+    jeepX < canvasWidth * 0.75
+  ) {
+    console.log("hello");
+    jeepX += 1;
+  } else if (scoreRaptor % 25 === 0 && scoreRaptor !== 0) {
+    jeepX = canvasWidth / 2 - jeepWidth;
+  } else if (
+    scoreRaptor % 35 === 0 &&
+    scoreRaptor !== 0 &&
+    jeepX < canvasWidth * 0.25
+  ) {
+    jeepX -= 1;
   }
 }
 

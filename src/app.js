@@ -185,8 +185,14 @@ function animate() {
     drawShooter();
   } else {
     drawBg();
-    moveBg();
+
+    //Jeep Logic
+
     drawJeep();
+    moveJeep();
+
+    moveBg();
+
     drawDriver();
     drawShooter();
 
@@ -205,24 +211,6 @@ function animate() {
     //Bullet logic
 
     bulletLogic(retry);
-
-    //Jeep Logic
-
-    if (
-      scoreRaptor % 15 === 0 &&
-      scoreRaptor !== 0 &&
-      jeepX < canvasWidth * 0.75
-    ) {
-      jeepX += 1;
-    } else if (scoreRaptor % 25 === 0 && scoreRaptor !== 0) {
-      jeepX = canvasWidth / 2 - jeepWidth;
-    } else if (
-      scoreRaptor % 35 === 0 &&
-      scoreRaptor !== 0 &&
-      jeepX < canvasWidth * 0.25
-    ) {
-      jeepX -= 1;
-    }
 
     //Aimlogic
 
