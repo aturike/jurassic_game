@@ -9,7 +9,7 @@ canvas.height = canvasHeight;
 const ctx = canvas.getContext("2d");
 
 const bgImg = new Image();
-bgImg.src = "./img/Background.png";
+bgImg.src = "img/Background.png";
 
 bgImg.onload = function () {
   drawBg();
