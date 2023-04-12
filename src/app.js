@@ -30,21 +30,25 @@ let retry = false;
 
 let frameCounter = 0;
 
+//Aim control
 let isAimLeft = false;
 let isAimRight = false;
 
+//Modifies by the difficulty
 let raptorLife = 0;
 let raptorSpeed = 0;
 let raptorFreqency = 0;
 let aimspeed = 0;
 
+//Array logic of number of pages. 0= first page
 let displayArr = ["block", "none", "none", "none", "none"];
 let showIndex = 0;
 
+//High score arr-local DB
 const scoreArr = [];
 
 window.addEventListener("load", () => {
-  //This is a hard solution for a onload img bug which doesn`t show images on the first load.
+  //This is a hard bugfix for a onload img bug which doesn`t show images on the first load. NOT IDEAL!
   if (!window.location.hash) {
     window.location = window.location + "#loaded";
     window.location.reload();
