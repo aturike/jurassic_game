@@ -18,7 +18,6 @@ Basic game for Jurassic Park raptor hunt. It is a 2D game where the main goal is
 
 ## Backlog
 
-- Winning logic
 - More levels with different image set
 - Adding other dinosaurs and logic
 - Jeep stop and other game alternatives
@@ -146,6 +145,7 @@ Basic game for Jurassic Park raptor hunt. It is a 2D game where the main goal is
 - start page 2
 - game page
 - game over page
+- winning page
 
 ## Links
 

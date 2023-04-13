@@ -206,7 +206,7 @@ function animate() {
 
     //Raptor logic
 
-    if (scoreRaptor % 2 === 0 && scoreRaptor !== 0) {
+    if (scoreRaptor % 20 === 0 && scoreRaptor !== 0) {
       if (Isincrease) {
         raptorSpeed += increase;
         if (raptorFreqency < 100) {
