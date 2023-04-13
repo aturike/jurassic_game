@@ -45,16 +45,19 @@ function moveJeep() {
   if (
     scoreRaptor % 15 === 0 &&
     scoreRaptor !== 0 &&
-    jeepX < canvasWidth * 0.75
+    jeepX < canvasWidth * 0.65
   ) {
-    console.log("hello");
     jeepX += 1;
-  } else if (scoreRaptor % 25 === 0 && scoreRaptor !== 0) {
-    jeepX = canvasWidth / 2 - jeepWidth;
+  } else if (
+    scoreRaptor % 25 === 0 &&
+    scoreRaptor !== 0 &&
+    jeepX < canvasWidth / 2 - jeepWidth
+  ) {
+    jeepX -= 1;
   } else if (
     scoreRaptor % 35 === 0 &&
     scoreRaptor !== 0 &&
-    jeepX < canvasWidth * 0.25
+    jeepX < canvasWidth * 0.35
   ) {
     jeepX -= 1;
   }

@@ -39,6 +39,8 @@ let raptorLife = 0;
 let raptorSpeed = 0;
 let raptorFreqency = 0;
 let aimspeed = 0;
+const increase = 0.5;
+let Isincrease = true;
 
 //Array logic of number of pages. 0= first page
 let displayArr = ["block", "none", "none", "none", "none"];
@@ -200,6 +202,21 @@ function animate() {
     drawScoreBar();
 
     //Raptor logic
+
+    if (scoreRaptor % 2 === 0 && scoreRaptor !== 0) {
+      if (Isincrease) {
+        raptorSpeed += increase;
+        if (raptorFreqency < 100) {
+        } else {
+          raptorFreqency = Math.floor(raptorFreqency - increase * 100);
+        }
+
+        Isincrease = false;
+      } else {
+      }
+    } else {
+      Isincrease = true;
+    }
 
     if (frameCounter % raptorFreqency === 0) {
       newRaptor(raptorLife, raptorSpeed);
