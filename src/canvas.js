@@ -19,9 +19,9 @@ let bg2Y = bgImg.height;
 
 function drawBg() {
   if (bgImg.complete) {
-    //console.log("background-complete");
     ctx.drawImage(bgImg, 0, bg1Y, canvas.width, bgImg.height);
     ctx.drawImage(bgImg, 0, bg2Y, canvas.width, bgImg.height);
+    // console.log("background-complete");
   } else {
     setInterval(drawBg(), 100);
   }

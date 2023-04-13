@@ -18,17 +18,16 @@ let jeepYintro = canvasHeight / 3;
 
 function drawJeep() {
   if (jeepImg.complete) {
-    //console.log("jeep complete");
     ctx.drawImage(jeepImg, jeepX, jeepY, jeepWidth, jeepHeigth);
+    // console.log("jeep complete");
   } else {
-    setInterval(drawJeep(), 100);
   }
 }
 
 function drawJeepIntro() {
   if (jeepImg.complete) {
-    //console.log("jeep complete");
     ctx.drawImage(jeepImg, jeepX, jeepYintro, jeepWidth, jeepHeigth);
+    // console.log("jeep complete");
   } else {
   }
 }
@@ -51,13 +50,13 @@ function moveJeep() {
   } else if (
     scoreRaptor % 25 === 0 &&
     scoreRaptor !== 0 &&
-    jeepX < canvasWidth / 2 - jeepWidth
+    jeepX > canvasWidth / 2 - jeepWidth
   ) {
     jeepX -= 1;
   } else if (
     scoreRaptor % 35 === 0 &&
     scoreRaptor !== 0 &&
-    jeepX < canvasWidth * 0.35
+    jeepX > canvasWidth * 0.35
   ) {
     jeepX -= 1;
   }
