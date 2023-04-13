@@ -149,6 +149,6 @@ Basic game for Jurassic Park raptor hunt. It is a 2D game where the main goal is
 
 ## Links
 
-- [Slides Link](http://slides.com)
+- [Slides Link](https://www.canva.com/design/DAFf92mGnB4/y3IN1_rGbYksDFPE9kX0jA/edit?utm_content=DAFf92mGnB4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 - [Github repository Link](https://github.com/aturike/jurassic_game)
 - [Deployment Link](https://aturike.github.io/jurrasic_game)
