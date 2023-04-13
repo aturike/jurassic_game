@@ -26,6 +26,7 @@ import { drawScoreBar } from "./scorebar.js";
 import { drawDriver, drawShooter } from "./Assets/characters.js";
 
 let animationId;
+let IsWinGame = false;
 let retry = false;
 
 let frameCounter = 0;
@@ -43,7 +44,7 @@ const increase = 0.5;
 let Isincrease = true;
 
 //Array logic of number of pages. 0= first page
-let displayArr = ["block", "none", "none", "none", "none"];
+let displayArr = ["block", "none", "none", "none", "none", "none"];
 let showIndex = 0;
 
 //High score arr-local DB
@@ -62,6 +63,7 @@ window.addEventListener("load", () => {
   document.querySelector("#start-page-2").style.display = displayArr[2];
   document.querySelector("#game-page").style.display = displayArr[3];
   document.querySelector("#game-over-page").style.display = displayArr[4];
+  document.querySelector("#winning-page").style.display = displayArr[5];
 
   document
     .querySelectorAll(".next-button")
@@ -164,6 +166,7 @@ function pageDisplay(highScoreArr) {
   document.querySelector("#start-page-2").style.display = displayArr[2];
   document.querySelector("#game-page").style.display = displayArr[3];
   document.querySelector("#game-over-page").style.display = displayArr[4];
+  document.querySelector("#winning-page").style.display = displayArr[5];
 
   if (highScoreArr) {
     document.querySelectorAll(".score-li").forEach((liElement, index) => {
@@ -235,13 +238,20 @@ function animate() {
     moveAim(aimspeed, isAimLeft, isAimRight);
   }
 
+  if (scoreRaptor % 100 === 0 && scoreRaptor !== 0) {
+    IsWinGame = true;
+    cancelAnimationFrame(animationId);
+    showIndex = 5;
+    pageDisplay();
+  }
+
   if (gameoverRaptor) {
     cancelAnimationFrame(animationId);
     showIndex = 4;
     scoreArr.push(scoreRaptor);
     let highScoreArr = [...scoreArr].sort((a, b) => b - a).slice(0, 3);
     pageDisplay(highScoreArr);
-  } else {
+  } else if (!IsWinGame) {
     animationId = requestAnimationFrame(animate);
   }
 }

@@ -16,7 +16,7 @@
     />
   </head>
   <body>
-    <div id="landing-page" >
+    <div id="landing-page">
       <div id="first-page">
         <button class="next-button"><h1 class="toFirst">Start</h1></button>
       </div>
@@ -26,7 +26,8 @@
           <div class="instruction-div">
             <div class="start-page-txt">
               <h2>
-                You and your friend decided to have a lovely trip to the totally-safe Jurassic Park.
+                You and your friend decided to have a lovely trip to the
+                totally-safe Jurassic Park.
               </h2>
               <br />
               <h2>
@@ -133,51 +134,55 @@
       </div>
       <div id="game-page">
         <canvas id="canvas"></canvas>
-      </div>  
-      
+      </div>
 
       <div id="game-over-page">
         <div class="game-over-page-flex">
-        <div class="game-over-txt">
-          <h1>Game over</h1>
-        </div>
-        <div class="game-over-score">
-          <h2>High score</h2>
-          <ol>
-            <li class="score-li"></li>
-            <li class="score-li"></li>
-            <li class="score-li"></li>
-          </ol>
-        </div>
-        <div class="restart-btn-div-parent">
-          <div class="restart-btn-div">
-            <button class="next-button">
-              <img
-                src="./img/button/icons8-previous-page-32 - Copy.png"
-                alt="next-btn"
-                class="toSecondBack"
-              />
-            </button>
-            <h4>Change difficulty</h4>
+          <div class="game-over-txt">
+            <h1>Game over</h1>
           </div>
-          <div class="restart-btn-div">
-            <button class="next-button">
-              <img
-                src="./img/button/icons8-restart-64.png"
-                alt="retry-btn"
-                class="toGameRetry"
-              />
-            </button>
-            <h4>Retry</h4>
+          <div class="game-over-score">
+            <h2>High score</h2>
+            <ol>
+              <li class="score-li"></li>
+              <li class="score-li"></li>
+              <li class="score-li"></li>
+            </ol>
+          </div>
+          <div class="restart-btn-div-parent">
+            <div class="restart-btn-div">
+              <button class="next-button">
+                <img
+                  src="./img/button/icons8-previous-page-32 - Copy.png"
+                  alt="next-btn"
+                  class="toSecondBack"
+                />
+              </button>
+              <h4>Change difficulty</h4>
+            </div>
+            <div class="restart-btn-div">
+              <button class="next-button">
+                <img
+                  src="./img/button/icons8-restart-64.png"
+                  alt="retry-btn"
+                  class="toGameRetry"
+                />
+              </button>
+              <h4>Retry</h4>
+            </div>
           </div>
         </div>
-        </div>      
+      </div>
+      <div id="winning-page">
+        <div class="winning-page-div">
+          <h1>Level 1 complete</h1>
+          <h2>
+            Congratulations, you`ve finished the demo of this game. Currently
+            there are no other levels.
+          </h2>
+        </div>
+      </div>
     </div>
-
-
-
-    
-      
 
     <script type="module" src="./src/app.js"></script>
   </body>
